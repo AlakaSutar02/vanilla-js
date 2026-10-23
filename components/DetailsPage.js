@@ -14,7 +14,9 @@ export default class DetailsPage extends HTMLElement {
     this.root.appendChild(styles);
 
     async function loadCSS() {
-      const request = await fetch("./components/DetailsPage.css");
+      const request = await fetch(
+        new URL("./DetailsPage.css", import.meta.url).href,
+      );
       styles.textContent = await request.text();
     }
     loadCSS();
@@ -25,7 +27,7 @@ export default class DetailsPage extends HTMLElement {
       this.product = await getProductById(this.dataset.productId);
       this.root.querySelector("h2").textContent = this.product.name;
       this.root.querySelector("img").src =
-        `./data/images/${this.product.image}`;
+        new URL(`../data/images/${this.product.image}`, import.meta.url).href;
       this.root.querySelector(".description").textContent =
         this.product.description;
       this.root.querySelector(".price").textContent =

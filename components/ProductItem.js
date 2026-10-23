@@ -16,7 +16,10 @@ export default class ProductItem extends HTMLElement {
     const product = JSON.parse(this.dataset.product);
     this.querySelector("h4").textContent = product.name;
     this.querySelector("p.price").textContent = `$${product.price.toFixed(2)}`;
-    this.querySelector("img").src = `./data/images/${product.image}`;
+    this.querySelector("img").src = new URL(
+      `../data/images/${product.image}`,
+      import.meta.url,
+    ).href;
     this.querySelector("a").addEventListener("click", (event) => {
       console.log(event.target.tagName);
       if (event.target.tagName.toLowerCase() == "button") {

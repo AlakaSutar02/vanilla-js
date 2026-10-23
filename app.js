@@ -26,7 +26,9 @@ window.addEventListener("DOMContentLoaded", () => {
   loadData();
 });
 
-navigator.serviceWorker.register("./serviceworker.js");
+navigator.serviceWorker.register(
+  new URL("./serviceworker.js", import.meta.url).href,
+);
 
 window.addEventListener("appcartchange", (event) => {
   const badge = document.getElementById("badge");

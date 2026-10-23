@@ -62,8 +62,13 @@ cd vanilla-js
 * Use a local development server (recommended for modules and service workers):
 ```bash
 npx serve .
-
 ```
+
+### Deploying to GitHub Pages
+
+Publish the repository root. Asset and data URLs are resolved relative to their
+files, so they work both at the domain root and under a repository path such as
+`/vanilla-js/`.
 
 
 

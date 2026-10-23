@@ -14,7 +14,9 @@ export default class MenuPage extends HTMLElement {
     this.root.appendChild(styles);
 
     async function loadCSS() {
-      const request = await fetch("./components/MenuPage.css");
+      const request = await fetch(
+        new URL("./MenuPage.css", import.meta.url).href,
+      );
       styles.textContent = await request.text();
     }
     loadCSS();
